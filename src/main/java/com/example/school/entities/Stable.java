@@ -17,6 +17,4 @@ public class Stable {
     private Long id;
     private Worker cleaner;
     private Date lastTimeCleaned;
-
-
 }
