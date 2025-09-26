@@ -13,7 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class HorseHouse {
+public class Stable {
     private Long id;
     private Worker cleaner;
     private Date lastTimeCleaned;

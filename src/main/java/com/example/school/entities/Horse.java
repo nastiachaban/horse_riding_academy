@@ -26,7 +26,7 @@ public class Horse {
     private String description;
     private Picture picture;
     @OneToOne
-    private HorseHouse house;
+    private Stable stable;
 
 
 }

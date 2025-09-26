@@ -1,0 +1,133 @@
+ @startuml
+
+entity Horse <Entity> {
+    name : String
+    breed: Breed
+    age: Integer
+    desc: String
+    id: int
+    picture : Picture
+    stable: Stable
+}
+
+enum Breed{
+    PONY
+    NORMAL HORSE
+    UNICORN
+}
+
+class Picture <ValueObject> {
+    name : String
+    width: Integer <<gt0>>
+    height: Integer <<gt0>>
+}
+
+enum TeacherType{
+    JUMPING_TRAINER
+    DRESSAGE_TRAINER
+    RACING_TRAINER
+    RIDING_INSTRUCTOR
+    POLO_TRAINER
+}
+
+entity Teacher <Entity> {
+    firstname : String
+    lastname: String
+    reviews: List<Review>
+    rating: Integer <<ge: 0 le: 5>>
+    account: Account
+    birthDate: DateTime
+    age: Integer <<ge: 18 le: 80>>
+    teacherType: TeacherType
+}
+
+class Account <ValueObject> {
+    username: String
+    password: String <<nn, length=100>>
+    picture: Picture
+    email: String <<nn, pattern=email, length=64>>
+    userType: UserType
+}
+
+enum UserType {
+    STUDENT
+    TEACHER
+    ADMIN
+    USER
+}
+
+entity Student <Entity> {
+    firstname : String
+    lastname: String
+    account: Account
+    age: Integer
+    horse: Horse
+    under_18: boolean
+}
+
+entity Worker <Entity> {
+    name : String
+    account: Account
+    age: Integer
+}
+
+class Course <ValueObject> {
+    type: Type
+    name: String
+    student: List<Student>
+    capacity: Integer
+    startDate: DateTime
+    endDate: DateTime
+}
+
+entity Lesson <Entity> {
+    date: DateTime
+    duration: Integer <<gt0>>
+}
+
+entity Booking <Entity> {
+    bookingDate: DateTime
+}
+
+entity Review <Entity> {
+    rating: Integer <<ge:0 le:5>>
+    comment: String
+}
+
+entity Sector <Entity> {
+    name: String
+    type: String
+}
+
+entity Stable <Entity> {
+    id: int
+    worker: Worker;
+    lastTimeCleaned: DateTime
+}
+
+Account <-- Student : has
+Account <-- Teacher : has
+Account <-- Worker : has
+
+Teacher --> Review : receives
+Student --> Review : writes
+Lesson --> Sector : located
+
+Course --> Teacher : taught by
+Lesson --> Course : belongs to
+Booking --> Student : made by
+Booking --> Lesson : reserves
+
+Horse --> Stable : lives in
+
+Student --> Horse : rides
+
+Sector --> Stable : contains
+Account --> Picture : has
+
+
+Horse --> Breed
+Teacher --> TeacherType
+Account --> UserType
+
+@enduml
