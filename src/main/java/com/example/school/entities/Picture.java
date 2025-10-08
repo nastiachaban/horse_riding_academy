@@ -18,7 +18,6 @@ public class Picture {
     @Id
     @GeneratedValue
     private Long id;
-
     private String path;
     private float width;
     private float height;

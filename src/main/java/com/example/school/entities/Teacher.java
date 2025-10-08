@@ -23,7 +23,7 @@ public class Teacher {
     private String firstname;
     private String lastname;
 
-    @ManyToOne
+    @OneToMany
     private List<Review> reviews;
 
     @OneToOne
