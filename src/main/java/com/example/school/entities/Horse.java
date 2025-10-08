@@ -24,6 +24,8 @@ public class Horse {
     private Breed breed;
     private int age;
     private String description;
+
+    @OneToOne
     private Picture picture;
     @OneToOne
     private Stable stable;
