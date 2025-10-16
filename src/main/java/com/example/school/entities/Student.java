@@ -4,16 +4,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 public class Student {
     @Id
@@ -25,6 +23,9 @@ public class Student {
 
     @OneToOne
     private Horse horse;
-    private boolean under_18; // idk
+    private boolean under_18;
+
+    @OneToOne
+    private Account account;
 
 }

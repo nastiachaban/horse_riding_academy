@@ -11,12 +11,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@Entity
 @AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@NoArgsConstructor
 @Getter
 @Setter
 @Builder
+@Entity
 public class Account implements UserDetails {
 
     @Id
@@ -32,12 +32,6 @@ public class Account implements UserDetails {
     @Enumerated(EnumType.STRING)
     private UserType userType;
 
-    public Account(String username, String email, String hashedPassword, UserType userType) {
-        this.username=username;
-        this.email=email;
-        this.password=hashedPassword;
-        this.userType= userType;
-    }
     @Override
     public boolean isAccountNonExpired() {
         return true;

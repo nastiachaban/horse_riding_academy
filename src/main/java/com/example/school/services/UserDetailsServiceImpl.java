@@ -18,10 +18,17 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         this.repository = repository;
     }
 
+//    @Override
+//    public UserDetails loadUserByUsername(String username) {
+//        Account account = repository.findByUsername(username).get();
+//        if (account == null) throw new RuntimeException("User not found");
+//        return account;
+//    }
+
     @Override
     public UserDetails loadUserByUsername(String username) {
-        Account account = repository.findByUsername(username).get();
-        if (account == null) throw new RuntimeException("User not found");
-        return account;
+        return repository.findByUsername(username)
+                .orElseThrow(() -> new org.springframework.security.core.userdetails.UsernameNotFoundException("User not found"));
     }
+
 }
