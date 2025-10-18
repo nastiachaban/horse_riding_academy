@@ -32,7 +32,7 @@ public class Account implements UserDetails {
     @Enumerated(EnumType.STRING)
     private UserType userType;
 
-    @Override
+   @Override
     public boolean isAccountNonExpired() {
         return true;
     }

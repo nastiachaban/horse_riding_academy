@@ -49,4 +49,9 @@ public class SchoolController {
 //        }
         return "home";
     }
+
+    @GetMapping("/profile")
+    public String getProfile(){
+        return "profile";
+    }
 }

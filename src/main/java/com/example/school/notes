@@ -3,3 +3,13 @@
 3. course consists out of many lessons.
 4. course may be taught by multiple teachers.
 5.
+
+Your current domain model (of course not complete and 100% correct - that is not the expectation)
+is properly mapped with Spring Data JPA to the default H2 in memory DB!
+
+Entities, ValueObjects , RichTypes -? , Enums
+Converters for RichTypes, Enums
+Repositories    [added]
+Relations (One to many, many to one)    [added]
+EmbeddedIds
+

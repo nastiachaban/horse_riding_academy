@@ -84,13 +84,12 @@
     <h1>Sign Up</h1>
     <form action="#"
           th:action="@{/users/signUp}"
-          th:object="${account}"
           method="post"><input type="hidden" name="_csrf" value="${_csrf.token}">
 
-        <input th:field="*{username}" type="text" name="Username" class="form-control" placeholder="username" required>
-        <input th:field="*{password}" type="password" name="password" class="form-control" placeholder="password" required>
-        <input th:field="*{confirmPassword}" type="password" name="confirmPassword" class="form-control" placeholder="confirm password" required>
-        <input th:field="*{email}" type="email" name="email" class="form-control" placeholder="email" required>
+        <input th:value="${username}" type="text" name="username" class="form-control" placeholder="username" required>
+        <input th:value="${password}" type="password" name="password" class="form-control" placeholder="password" required>
+        <input th:value="${confirmPassword}" type="password" name="confirmPassword" class="form-control" placeholder="confirm password" required>
+        <input th:value="${email}" type="email" name="email" class="form-control" placeholder="email" required>
 
         <button type="submit" class="btn">Sign Up</button>
 

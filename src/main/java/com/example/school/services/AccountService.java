@@ -43,7 +43,7 @@ public class AccountService {
         }
 
         String hashedPassword = passwordEncoder.encode(request.getPassword());
-       // Account account= new Account((new Random()).nextLong(),new Picture(), request.getUsername(),request.getEmail(),hashedPassword,UserType.STUDENT);
+        // Account account= new Account((new Random()).nextLong(),new Picture(), request.getUsername(),request.getEmail(),hashedPassword,UserType.STUDENT);
         Account account = Account.builder()
                 .username(request.getUsername())
                 .email(request.getEmail())

@@ -10,10 +10,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/users")
@@ -33,9 +30,10 @@ public class AccountController {
     }
 
     @PostMapping("/signUp")
-    public String signUp(@ModelAttribute SignUp requestDto) {
+    public String signUp(@RequestParam String username,@RequestParam String password,
+                         @RequestParam String confirmPassword,@RequestParam String email) {
         LOGGER.info("post signup");
-        service.signup(requestDto);
+        service.signup(new SignUp(username, password, confirmPassword, email));
 
         return "redirect:/users/logIn";
     }
@@ -43,7 +41,11 @@ public class AccountController {
     @GetMapping("/signUp")
     public String signUp(Model model){
         LOGGER.info("get signup");
-        model.addAttribute("account",new SignUp());
+        model.addAttribute("username","");
+        model.addAttribute("password","");
+        model.addAttribute("confirmPassword","");
+        model.addAttribute("email","");
+
         return "signup";
     }
 
