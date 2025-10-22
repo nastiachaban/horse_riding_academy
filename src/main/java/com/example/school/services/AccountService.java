@@ -51,10 +51,26 @@ public class AccountService {
                 .userType(UserType.STUDENT)
                 .build();
 
-        accountRepo.save(account);
+        Student student = new Student();
+        student.setUsername(request.getUsername());
+        student.setEmail(request.getEmail());
+        student.setPassword(passwordEncoder.encode(request.getPassword()));
+        student.setUserType(UserType.STUDENT);
+// set student fields if needed: firstname, lastname, etc.
 
-        Student student= Student.builder().account(account).build();
-        studentRepo.save(student);
+        studentRepo.save(student); // only save the subclass!
+
+
+    }
+
+    private Student convertAccountToStudent(Account account) {
+        Student student = new Student();
+        student.setUsername(account.getUsername());
+        student.setEmail(account.getEmail());
+        student.setPassword(account.getPassword());
+        student.setUserType(UserType.STUDENT);
+        student.setPicture(account.getPicture());
+        return student;
     }
 
 }

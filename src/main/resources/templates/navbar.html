@@ -10,7 +10,7 @@
 
 <nav th:fragment="navbar" class="navbar navbar-expand-md navbar-custom">
     <div class="container-fluid justify-content-center">
-        <a class="navbar-brand d-flex align-items-center" th:href="@{/}">
+        <a class="navbar-brand d-flex align-items-center"  th:href="@{/school/home}">
             <img th:src="@{/images/horse.png}" alt="Logo" class="navbar-logo">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
@@ -25,7 +25,7 @@
                     <a class="nav-link">My Courses</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" >My Profile</a>
+                    <a class="nav-link"  th:href="@{/school/profile}" >My Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link">Teachers</a>

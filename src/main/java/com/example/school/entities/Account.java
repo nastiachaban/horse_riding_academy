@@ -17,6 +17,8 @@ import java.util.List;
 @Setter
 @Builder
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "dtype")
 public class Account implements UserDetails {
 
     @Id

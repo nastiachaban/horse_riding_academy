@@ -15,19 +15,16 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Teacher {
+public class Teacher extends Account{
 
-    @Id
-    @GeneratedValue
-    private Long id;
+//    @Id
+//    @GeneratedValue
+//    private Long id;
     private String firstname;
     private String lastname;
 
     @OneToMany
     private List<Review> reviews;
-
-    @OneToOne
-    private Account account;
 
     private Date birthDate;
 

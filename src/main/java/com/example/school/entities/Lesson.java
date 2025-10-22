@@ -1,9 +1,6 @@
 package com.example.school.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,14 +15,11 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Lesson {
-    @Id
-    @GeneratedValue
-    private Long id;
-    private Date date;
-    private int duration;
 
-    @OneToOne
-    private Teacher teacher;
+    @EmbeddedId
+    private LessonId id;
+
+    private int duration;
 
     @OneToOne
     private Sector location;
